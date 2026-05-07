@@ -2,18 +2,14 @@
 
 ## Active task
 
-### Task 3: Habit management
-Create, edit, delete and reorder habits. Separate settings page.
-Boolean and numeric types supported.
-
----
-
-## Backlog
-
 ### Task 4: Daily check-in and today view
 Home screen with greeting, heatmap placeholder, habits listed 
 with checkboxes and numeric inputs. Creates DailyLog on first 
 entry of the day. Individual habit completion as you go.
+
+---
+
+## Backlog
 
 ### Task 5: Today view polish
 Outstanding vs completed visual distinction. Progress indicator 
@@ -47,6 +43,13 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 3: Habit management
+Settings page at /habits. Create, edit, delete, reorder with
+up/down buttons. Boolean and numeric types. HabitForm shared
+component. Server component fetches habits; client component
+handles mutations via router.refresh(). API routes at
+/api/habits and /api/habits/[id].
 
 ### Task 2: Database schema
 habit, daily_log, and habit_entry tables created in Supabase.
