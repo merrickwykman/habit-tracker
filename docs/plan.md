@@ -1,95 +1,92 @@
 # Plan
 
-<!--
-This is your build bible.
-One task at a time. Each task is a work order for Claude.
-Backlog lives at the bottom — promote to Active when ready.
-
-Reference tasks explicitly in Claude Code:
-"Read AGENTS.md and docs/plan.md Task 1. Implement Task 1 only."
--->
-
 ## Active task
 
-<!--
-Only ever one active task.
-Move to Completed when done, promote next from Backlog.
--->
-
-### Task [N]: [Name]
+### Task 1: Project setup and Supabase connection
 
 #### Context
-<!--
-Why does this task exist?
-What user problem does it solve?
-What came before it that this depends on?
--->
+First task on every project. Establishes the foundation everything 
+else builds on. No features until this is verified working.
 
 #### Objective
-<!--
-One sentence. What should exist after this task that doesn't exist now?
--->
+A running Next.js app connected to Supabase with environment 
+variables configured and verified.
 
 #### Files to create or edit
-<!--
-Be specific. Claude will only touch these files.
-- src/app/[route]/page.tsx — create
-- src/components/[Component]/index.tsx — create
-- src/lib/supabase.ts — edit
--->
+- src/lib/supabase.ts — create Supabase client
+- src/app/page.tsx — replace default with minimal placeholder
+- .env.local — add Supabase credentials (not committed)
+- .env.example — confirm variables are listed
 
 #### Requirements
-<!--
-Specific, testable statements.
-- User can do X
-- Clicking Y does Z
-- Data is saved to [table]
--->
+- Next.js app runs on localhost:3000 without errors
+- Supabase client initialises without errors
+- Environment variables load correctly
+- No default Next.js content visible
 
 #### Do not do
-<!--
-Explicit constraints. Prevents Claude gold-plating.
-- Do not add animations yet
-- Do not implement [future feature]
-- Do not modify [unrelated file]
--->
+- Do not create any database tables yet
+- Do not build any UI components yet
+- Do not install additional dependencies without asking
 
 #### Future considerations
-<!--
-Optional. Flag things deliberately deferred.
-- Auth will be added in Task [N]
-- Database persistence planned for Task [N]
-- Mobile layout addressed in polish phase
--->
+- Database schema created in Task 2
+- Auth may be added in a future version
 
 #### Acceptance checks
-<!--
-How do you verify this is done correctly?
-- [ ] Check 1
-- [ ] Check 2
-- [ ] Check 3
--->
+- [ ] npm run dev runs without errors
+- [ ] No TypeScript errors on npx tsc --noEmit
+- [ ] Supabase client imports without error
+- [ ] Placeholder page visible at localhost:3000
 
 ---
 
 ## Backlog
 
-<!--
-Future tasks in rough priority order.
-Promote to Active when current task is complete.
+### Task 2: Database schema
+Create all tables in Supabase — Habit, DailyLog, HabitEntry. 
+Verify with test data.
 
-### Task [N]: [Name]
-One line description.
--->
+### Task 3: Habit management
+Create, edit, delete and reorder habits. Separate settings page.
+Boolean and numeric types supported.
+
+### Task 4: Daily check-in and today view
+Home screen with greeting, heatmap placeholder, habits listed 
+with checkboxes and numeric inputs. Creates DailyLog on first 
+entry of the day. Individual habit completion as you go.
+
+### Task 5: Today view polish
+Outstanding vs completed visual distinction. Progress indicator 
+showing X of Y habits done today.
+
+### Task 6: History view
+List of past days showing summary of completed habits per day. 
+Clean, scannable, no drilling into detail.
+
+### Task 7: Streak tracking
+Calculate consecutive days from DailyLog dates. One missed day 
+grace period before reset. Display streak on home screen.
+
+### Task 8: Day notes
+Free text note field on each day. Added from home screen or 
+history view.
+
+### Task 9: Charts and visualisation
+Completion rate per habit over 30 days. Line chart for numeric 
+metrics over time. Recharts library.
+
+### Task 10: Activity heatmap
+GitHub-style yearly heatmap of logging activity. Colour intensity 
+based on number of habits completed that day. Hero element on 
+home screen.
+
+### Task 11: PWA setup
+manifest.json, service worker, add to home screen support. 
+Mobile-friendly layout pass.
 
 ---
 
 ## Completed
 
-<!--
-Move finished tasks here.
-Gives a record of progress and context for future tasks.
-
-### Task [N]: [Name] ✓
-Brief note on what was built and any decisions made.
--->
+<!-- Move finished tasks here with a brief note on decisions made -->

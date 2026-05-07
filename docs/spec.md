@@ -1,57 +1,54 @@
 # Product Specification
 
-<!--
-Fill this in during your planning session before starting any build.
-Be specific — vague specs produce vague products.
--->
-
 ## What is this?
-<!-- One paragraph. What does this product do? -->
+A personal daily habit and health metrics tracker. The user logs 
+whether they exercised, which supplements were taken, and numeric 
+health metrics each day. Designed for at-a-glance daily visibility 
+and meaningful reflection over time.
 
 ## Who is it for?
-<!--
-Be specific. Not "people who want X" but a real person with a real frustration.
-Example: "A solo founder who tracks client work across multiple Notion pages 
-and keeps losing context between sessions."
--->
+A solo user managing their personal health who wants all daily 
+tracking in one place. Someone who needs to see at a glance what's 
+been done today and what's still outstanding, and who wants to 
+reflect on patterns over time through visual data.
 
 ## What problem does it solve?
-<!--
-What does the user do today instead?
-If there's no current workaround, the problem probably isn't painful enough.
--->
+Currently nothing is being tracked. Without a tool, there's no 
+visibility on patterns, no way to correlate symptoms with habits, 
+and no accountability. This tool creates the habit of tracking by 
+making daily logging frictionless.
 
 ## Core features (v1 only)
-<!--
-Maximum 5. If you have more, move them to docs/plan.md backlog.
-- Feature 1
-- Feature 2
-- Feature 3
--->
+- Daily check-in — tap habits off individually throughout the day
+- Today view — home screen showing completion status at a glance
+- History view — summary of past days in a list or calendar
+- Streak tracking — consecutive days with one missed day grace period
+- Charts and visualisation — completion rates and numeric metric trends over 30 days
+- Activity heatmap — GitHub-style yearly view of logging activity
+- Day notes — free text note attached to any day
 
 ## What does success look like?
-<!--
-How do you know this worked? Be concrete.
-Example: "I use it every day without reaching for the original tool."
--->
+After 30 days the app is full of data points, visually interesting, 
+and easy to reflect on. Daily logging feels frictionless — 
+open the app, tap off what's done, close it.
 
 ## Explicitly out of scope for v1
-<!--
-As important as what's in scope.
-List everything you're deliberately not building yet.
--->
+- No sharing with other users
+- No reminders or notifications
+- No integration with wearables or Apple Health
+- No social or community features
+- No AI analysis of patterns
+- No authentication or user accounts
+- No mobile app (PWA can come later)
 
-## Monetisation (if applicable)
-<!--
-Free / paid-from-day-one / freemium / one-time purchase?
-Decide this before building — it affects architecture.
--->
+## Monetisation
+None — personal tool, free.
 
 ## Security considerations
-<!-- 
+<!--
 Note which of these apply to this project:
-- Auth (session expiry, token reuse, OAuth edge cases)
-- Multi-tenancy (RLS policies, cross-user data access)
-- Database performance (N+1 queries, missing indexes)
-- Billing (Stripe webhooks, failed payments, subscription lifecycle)
+- Auth (session expiry, token reuse, OAuth edge cases) — N/A
+- Multi-tenancy (RLS policies, cross-user data access) — N/A, single user
+- Database performance (N+1 queries, missing indexes) — applies
+- Billing (Stripe webhooks, failed payments, subscription lifecycle) — N/A
 -->
