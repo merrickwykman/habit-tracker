@@ -2,37 +2,13 @@
 
 ## Active task
 
-### Task 2: Database schema
-
-#### Context
-Creates the three tables the app depends on. No app features
-can be built until the schema exists and is verified.
-
-#### Objective
-All tables created in Supabase and verified with test data.
-
-#### Files created
-- supabase/schema.sql — DDL for habit, daily_log, habit_entry tables
-- supabase/seed.sql — test data to verify the schema
-- src/types/index.ts — TypeScript interfaces matching the schema
-
-#### Requirements
-- Run schema.sql in the Supabase SQL editor
-- Run seed.sql to insert test rows
-- Verify rows appear in the Supabase Table Editor
-
-#### Acceptance checks
-- [ ] All three tables visible in Supabase Table Editor
-- [ ] Seed data inserted without errors
-- [ ] npx tsc --noEmit passes
+### Task 3: Habit management
+Create, edit, delete and reorder habits. Separate settings page.
+Boolean and numeric types supported.
 
 ---
 
 ## Backlog
-
-### Task 3: Habit management
-Create, edit, delete and reorder habits. Separate settings page.
-Boolean and numeric types supported.
 
 ### Task 4: Daily check-in and today view
 Home screen with greeting, heatmap placeholder, habits listed 
@@ -71,6 +47,12 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 2: Database schema
+habit, daily_log, and habit_entry tables created in Supabase.
+habit_type enum ('boolean', 'numeric'). sort_order used instead
+of reserved word order. Verified with seed data. TypeScript
+interfaces in src/types/index.ts.
 
 ### Task 1: Project setup and Supabase connection
 Next.js 16 scaffolded with TypeScript, Tailwind, App Router.
