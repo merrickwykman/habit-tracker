@@ -5,6 +5,7 @@ export interface Habit {
   name: string;
   type: HabitType;
   unit: string | null;
+  goal: number | null;
   sort_order: number;
   created_at: string;
 }

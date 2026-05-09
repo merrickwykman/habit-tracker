@@ -10,6 +10,7 @@ create table habit (
   name        text not null,
   type        habit_type not null,
   unit        text,
+  goal        numeric,
   sort_order  integer not null default 0,
   created_at  timestamptz not null default now()
 );

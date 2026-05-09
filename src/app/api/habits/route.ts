@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: parsed.error.flatten() }, { status: 400 });
   }
 
-  const { name, type, unit } = parsed.data;
+  const { name, type, unit, goal } = parsed.data;
 
   // Place new habit at the end
   const { count } = await supabase
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
 
   const { data, error } = await supabase
     .from("habit")
-    .insert({ name, type, unit: unit ?? null, sort_order: count ?? 0 })
+    .insert({ name, type, unit: unit ?? null, goal: goal ?? null, sort_order: count ?? 0 })
     .select()
     .single();
 

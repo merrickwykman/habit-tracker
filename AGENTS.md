@@ -13,7 +13,15 @@ See docs/architecture.md for full stack and technical decisions.
 Default: Next.js, TypeScript, Tailwind, shadcn/ui, Supabase, Zod.
 
 ## Rules
-- Keep components under 150 lines — split if larger
+- Commit all changes directly to main.
+- Do not create separate branches or worktrees.
+- ## Component size
+Keep components focused on a single responsibility.
+As a guide, aim for under 150 lines.
+If a component exceeds this, consider whether it can be split —
+but do not split purely to hit a line count.
+Forms, data tables, and complex interactive components 
+may legitimately exceed 150 lines — use judgment.
 - Prefer readable code over clever abstractions
 - Use server components by default, client components only when needed
 - Never hardcode secrets — environment variables only

@@ -14,6 +14,7 @@ export default function HabitForm({ initial, onSave, onCancel }: HabitFormProps)
   const [name, setName] = useState(initial?.name ?? "");
   const [type, setType] = useState<"boolean" | "numeric">(initial?.type ?? "boolean");
   const [unit, setUnit] = useState(initial?.unit ?? "");
+  const [goal, setGoal] = useState(initial?.goal != null ? String(initial.goal) : "");
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
@@ -28,10 +29,12 @@ export default function HabitForm({ initial, onSave, onCancel }: HabitFormProps)
 
     setSaving(true);
     try {
+      const goalValue = type === "numeric" && goal.trim() ? Number(goal) : null;
       await onSave({
         name: name.trim(),
         type,
         unit: type === "numeric" && unit.trim() ? unit.trim() : null,
+        goal: goalValue && goalValue > 0 ? goalValue : null,
       });
     } catch {
       setError("Something went wrong. Please try again.");
@@ -84,20 +87,41 @@ export default function HabitForm({ initial, onSave, onCancel }: HabitFormProps)
       </div>
 
       {type === "numeric" && (
-        <div className="flex flex-col gap-1">
-          <label htmlFor="habit-unit" className="text-sm font-medium">
-            Unit <span className="font-normal text-gray-500">(optional)</span>
-          </label>
-          <input
-            id="habit-unit"
-            type="text"
-            value={unit}
-            onChange={(e) => setUnit(e.target.value)}
-            placeholder="e.g. hours, km, 1–10"
-            maxLength={20}
-            className="rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
-          />
-        </div>
+        <>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="habit-unit" className="text-sm font-medium">
+              Unit <span className="font-normal text-gray-500">(optional)</span>
+            </label>
+            <input
+              id="habit-unit"
+              type="text"
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+              placeholder="e.g. hours, km, 1–10"
+              maxLength={20}
+              className="rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label htmlFor="habit-goal" className="text-sm font-medium">
+              Daily goal <span className="font-normal text-gray-500">(optional)</span>
+            </label>
+            <input
+              id="habit-goal"
+              type="number"
+              min="0"
+              step="any"
+              value={goal}
+              onChange={(e) => setGoal(e.target.value)}
+              placeholder="e.g. 4"
+              className="rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gray-400"
+            />
+            <p className="text-xs text-gray-500">
+              Habit counts as done when your logged value meets or exceeds this.
+            </p>
+          </div>
+        </>
       )}
 
       {error && <p className="text-sm text-red-600">{error}</p>}

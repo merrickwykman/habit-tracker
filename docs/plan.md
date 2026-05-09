@@ -2,19 +2,19 @@
 
 ## Active task
 
-### Task 5: Today view polish
-Outstanding vs completed visual distinction. Progress indicator 
-showing X of Y habits done today.
-
----
-
-## Backlog
-
 ### Task 5b: Habit goals and completion thresholds
 Add optional goal field to numeric habits (e.g. Water goal = 4L).
 Habit only marks as completed when logged value meets or exceeds goal.
 Requires: Supabase migration to add goal column, habit form update, 
 completion logic update in HabitCheckIn.
+
+---
+
+## Backlog
+
+### Task 5: Today view polish
+Outstanding vs completed visual distinction. Progress indicator 
+showing X of Y habits done today.
 
 ### Task 6: History view
 List of past days showing summary of completed habits per day. 

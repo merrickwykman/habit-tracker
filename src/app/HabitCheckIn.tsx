@@ -42,8 +42,9 @@ export default function HabitCheckIn({ habit, entry, onSave }: HabitCheckInProps
 
     setInputError(null);
     setSaving(true);
+    const completed = habit.goal != null ? parsed >= habit.goal : true;
     try {
-      await onSave(habit.id, true, parsed);
+      await onSave(habit.id, completed, parsed);
     } catch {
       setInputError("Failed to save. Please try again.");
     } finally {
@@ -101,6 +102,11 @@ export default function HabitCheckIn({ habit, entry, onSave }: HabitCheckInProps
       </div>
       {inputError && (
         <p className="text-right text-xs text-red-500">{inputError}</p>
+      )}
+      {habit.goal != null && (
+        <p className="text-right text-xs text-gray-400">
+          Goal: {habit.goal}{habit.unit ? ` ${habit.unit}` : ""}
+        </p>
       )}
     </div>
   );
