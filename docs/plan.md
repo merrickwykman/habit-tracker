@@ -2,23 +2,13 @@
 
 ## Active task
 
-### Task 5b: Habit goals and completion thresholds
-Add optional goal field to numeric habits (e.g. Water goal = 4L).
-Habit only marks as completed when logged value meets or exceeds goal.
-Requires: Supabase migration to add goal column, habit form update, 
-completion logic update in HabitCheckIn.
+### Task 6: History view
+List of past days showing summary of completed habits per day. 
+Clean, scannable, no drilling into detail.
 
 ---
 
 ## Backlog
-
-### Task 5: Today view polish
-Outstanding vs completed visual distinction. Progress indicator 
-showing X of Y habits done today.
-
-### Task 6: History view
-List of past days showing summary of completed habits per day. 
-Clean, scannable, no drilling into detail.
 
 ### Task 7: Streak tracking
 Calculate consecutive days from DailyLog dates. One missed day 
@@ -44,6 +34,16 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 5b: Habit goals and completion thresholds
+Added optional `goal` column to the `habit` table. Numeric habits
+only mark as completed when logged value meets or exceeds goal.
+HabitForm shows "Daily goal" input for numeric habits. HabitCheckIn
+derives `completed` from `parsed >= habit.goal`. API routes updated.
+
+### Task 5: Today view polish
+Outstanding vs completed visual distinction. Progress indicator 
+showing X of Y habits done today.
 
 ### Task 4: Daily check-in and today view
 Home screen replaced with server component fetching habits,

@@ -86,7 +86,10 @@ export default function TodayView({ habits, entries, greeting }: TodayViewProps)
         </>
       )}
 
-      <div className="border-t border-gray-100 pt-4">
+      <div className="flex items-center justify-between border-t border-gray-100 pt-4">
+        <Link href="/history" className="text-sm text-gray-400 hover:text-gray-700">
+          History →
+        </Link>
         <Link href="/habits" className="text-sm text-gray-400 hover:text-gray-700">
           Manage habits →
         </Link>
