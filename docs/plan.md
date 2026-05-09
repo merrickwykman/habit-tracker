@@ -2,18 +2,13 @@
 
 ## Active task
 
-### Task 4: Daily check-in and today view
-Home screen with greeting, heatmap placeholder, habits listed 
-with checkboxes and numeric inputs. Creates DailyLog on first 
-entry of the day. Individual habit completion as you go.
+### Task 5: Today view polish
+Outstanding vs completed visual distinction. Progress indicator 
+showing X of Y habits done today.
 
 ---
 
 ## Backlog
-
-### Task 5: Today view polish
-Outstanding vs completed visual distinction. Progress indicator 
-showing X of Y habits done today.
 
 ### Task 6: History view
 List of past days showing summary of completed habits per day. 
@@ -43,6 +38,13 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 4: Daily check-in and today view
+Home screen replaced with server component fetching habits,
+today's daily_log, and habit_entry rows. TodayView client
+component renders greeting, heatmap placeholder, progress count,
+and habit list. HabitCheckIn handles boolean checkbox and numeric
+input. /api/entries POST upserts entries and auto-creates daily_log.
 
 ### Task 3: Habit management
 Settings page at /habits. Create, edit, delete, reorder with

@@ -15,6 +15,8 @@ export default function HabitCheckIn({ habit, entry, onSave }: HabitCheckInProps
     entry?.value != null ? String(entry.value) : ""
   );
 
+  const isCompleted = entry?.completed ?? false;
+
   async function handleBooleanChange(checked: boolean) {
     setSaving(true);
     try {
@@ -40,21 +42,24 @@ export default function HabitCheckIn({ habit, entry, onSave }: HabitCheckInProps
       <label className="flex cursor-pointer items-center gap-3">
         <input
           type="checkbox"
-          checked={entry?.completed ?? false}
+          checked={isCompleted}
           disabled={saving}
           onChange={(e) => handleBooleanChange(e.target.checked)}
           className="h-4 w-4 rounded border-gray-300 accent-gray-900"
         />
-        <span className={entry?.completed ? "text-gray-400 line-through" : ""}>
+        <span className={isCompleted ? "text-gray-400 line-through" : "text-gray-900"}>
           {habit.name}
         </span>
+        {saving && <span className="ml-auto text-xs text-gray-400">Saving…</span>}
       </label>
     );
   }
 
   return (
     <div className="flex items-center gap-3">
-      <span className="flex-1">{habit.name}</span>
+      <span className={`flex-1 ${isCompleted ? "text-gray-400" : "text-gray-900"}`}>
+        {habit.name}
+      </span>
       <input
         type="number"
         value={numericValue}
@@ -70,7 +75,7 @@ export default function HabitCheckIn({ habit, entry, onSave }: HabitCheckInProps
         disabled={saving}
         className="rounded bg-gray-900 px-3 py-1 text-sm text-white hover:bg-gray-700 disabled:opacity-50"
       >
-        {saving ? "…" : "Save"}
+        {saving ? "…" : isCompleted ? "Update" : "Save"}
       </button>
     </div>
   );

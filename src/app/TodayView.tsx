@@ -16,6 +16,9 @@ export default function TodayView({ habits, entries, greeting }: TodayViewProps)
 
   const entryByHabitId = Object.fromEntries(entries.map((e) => [e.habit_id, e]));
   const completedCount = habits.filter((h) => entryByHabitId[h.id]?.completed).length;
+  const total = habits.length;
+  const progressPct = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+  const allDone = total > 0 && completedCount === total;
 
   async function handleSave(
     habitId: string,
@@ -48,20 +51,36 @@ export default function TodayView({ habits, entries, greeting }: TodayViewProps)
         </p>
       ) : (
         <>
-          <p className="text-sm text-gray-500">
-            {completedCount} of {habits.length} completed today
-          </p>
+          {/* Progress indicator */}
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center justify-between text-sm">
+              <span className={allDone ? "font-medium text-green-600" : "text-gray-500"}>
+                {allDone ? "All done today! 🎉" : `${completedCount} of ${total} completed`}
+              </span>
+              <span className="text-gray-400">{progressPct}%</span>
+            </div>
+            <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100">
+              <div
+                className={`h-full rounded-full transition-all duration-300 ${allDone ? "bg-green-500" : "bg-gray-900"}`}
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+          </div>
 
+          {/* Habit list */}
           <ul className="flex flex-col divide-y divide-gray-100 rounded border border-gray-200">
-            {habits.map((habit) => (
-              <li key={habit.id} className="px-4 py-3">
-                <HabitCheckIn
-                  habit={habit}
-                  entry={entryByHabitId[habit.id] ?? null}
-                  onSave={handleSave}
-                />
-              </li>
-            ))}
+            {habits.map((habit) => {
+              const entry = entryByHabitId[habit.id] ?? null;
+              const done = entry?.completed ?? false;
+              return (
+                <li
+                  key={habit.id}
+                  className={`px-4 py-3 transition-colors ${done ? "bg-green-50" : "bg-white"}`}
+                >
+                  <HabitCheckIn habit={habit} entry={entry} onSave={handleSave} />
+                </li>
+              );
+            })}
           </ul>
         </>
       )}
