@@ -3,7 +3,7 @@ import { z } from "zod";
 import { supabase } from "@/lib/supabase";
 
 const entrySchema = z.object({
-  habit_id: z.string().uuid(),
+  habit_id: z.string(),
   completed: z.boolean(),
   value: z.number().nullable().optional(),
 });
