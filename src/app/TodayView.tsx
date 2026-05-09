@@ -25,11 +25,12 @@ export default function TodayView({ habits, entries, greeting }: TodayViewProps)
     completed: boolean,
     value: number | null | undefined
   ) {
-    await fetch("/api/entries", {
+    const res = await fetch("/api/entries", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ habit_id: habitId, completed, value: value ?? null }),
     });
+    if (!res.ok) throw new Error("Failed to save entry.");
     router.refresh();
   }
 
