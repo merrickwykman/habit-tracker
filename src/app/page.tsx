@@ -1,12 +1,39 @@
-import Link from "next/link";
+import { supabase } from "@/lib/supabase";
+import TodayView from "./TodayView";
 
-export default function Home() {
+function greeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+  // TODO: personalise with user name once auth is added
+}
+
+export default async function Home() {
+  const today = new Date().toISOString().slice(0, 10);
+
+  const [{ data: habits }, { data: log }] = await Promise.all([
+    supabase.from("habit").select("*").order("sort_order", { ascending: true }),
+    supabase.from("daily_log").select("id").eq("date", today).maybeSingle(),
+  ]);
+
+  const entries =
+    log?.id
+      ? (
+          await supabase
+            .from("habit_entry")
+            .select("*")
+            .eq("daily_log_id", log.id)
+        ).data ?? []
+      : [];
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4">
-      <h1 className="text-xl font-semibold">Habit Tracker</h1>
-      <Link href="/habits" className="text-sm text-gray-500 underline hover:text-gray-800">
-        Manage habits →
-      </Link>
+    <main className="mx-auto max-w-xl px-4 py-10">
+      <TodayView
+        habits={habits ?? []}
+        entries={entries}
+        greeting={greeting()}
+      />
     </main>
   );
 }
