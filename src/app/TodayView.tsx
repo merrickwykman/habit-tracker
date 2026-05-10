@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import HabitCheckIn from "./HabitCheckIn";
 import DayNotes from "@/components/DayNotes";
+import Heatmap from "@/components/Heatmap";
 import type { Habit, HabitEntry } from "@/types";
 
 interface TodayViewProps {
@@ -13,9 +14,11 @@ interface TodayViewProps {
   streak: number;
   today: string;
   notes: string | null;
+  heatmapData: Record<string, number>;
+  totalHabits: number;
 }
 
-export default function TodayView({ habits, entries, greeting, streak, today, notes }: TodayViewProps) {
+export default function TodayView({ habits, entries, greeting, streak, today, notes, heatmapData, totalHabits }: TodayViewProps) {
   const router = useRouter();
 
   const entryByHabitId = Object.fromEntries(entries.map((e) => [e.habit_id, e]));
@@ -49,10 +52,7 @@ export default function TodayView({ habits, entries, greeting, streak, today, no
         )}
       </div>
 
-      {/* Heatmap placeholder — built in Task 10 */}
-      <div className="flex h-16 items-center justify-center rounded border border-dashed border-gray-200 text-sm text-gray-400">
-        Activity heatmap coming soon
-      </div>
+      <Heatmap data={heatmapData} totalHabits={totalHabits} />
 
       {habits.length === 0 ? (
         <p className="text-gray-500">

@@ -2,18 +2,14 @@
 
 ## Active task
 
-### Task 9: Charts and visualisation
-Completion rate per habit over 30 days. Line chart for numeric 
-metrics over time. Recharts library.
-
----
-
-## Backlog
-
 ### Task 10: Activity heatmap
 GitHub-style yearly heatmap of logging activity. Colour intensity 
 based on number of habits completed that day. Hero element on 
 home screen.
+
+---
+
+## Backlog
 
 ### Task 11: PWA setup
 manifest.json, service worker, add to home screen support. 
@@ -22,6 +18,11 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 9: Charts and visualisation
+Dedicated /charts page. Bar chart of 30-day completion rates for boolean
+habits; one line chart per numeric habit. Recharts (already installed).
+"Charts →" link added to home screen bottom nav.
 
 ### Task 8: Day notes
 Free text note field per day. Textarea saves on blur via PATCH /api/logs

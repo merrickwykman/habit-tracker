@@ -16,13 +16,23 @@ export default async function Home() {
   const [{ data: habits }, { data: log }, { data: allLogs }] = await Promise.all([
     supabase.from("habit").select("*").order("sort_order", { ascending: true }),
     supabase.from("daily_log").select("id, notes").eq("date", today).maybeSingle(),
-    supabase.from("daily_log").select("date").order("date", { ascending: false }),
+    supabase
+      .from("daily_log")
+      .select("date, habit_entry(completed)")
+      .order("date", { ascending: false }),
   ]);
 
   const streak = calculateStreak(
     (allLogs ?? []).map((l) => String(l.date).slice(0, 10)),
     today
   );
+
+  const heatmapData: Record<string, number> = {};
+  for (const log of allLogs ?? []) {
+    const date = String(log.date).slice(0, 10);
+    const entries = (log.habit_entry as unknown as { completed: boolean }[]) ?? [];
+    heatmapData[date] = entries.filter((e) => e.completed).length;
+  }
 
   const entries =
     log?.id
@@ -43,6 +53,8 @@ export default async function Home() {
         streak={streak}
         today={today}
         notes={log?.notes ?? null}
+        heatmapData={heatmapData}
+        totalHabits={habits?.length ?? 0}
       />
     </main>
   );
