@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Read(//c/Users/lukew/Documents/Claude Projects/habit-tracker/**)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(dir /s \"C:\\\\Users\\\\lukew\\\\Documents\\\\Claude Projects\\\\habit-tracker\\\\src\\\\app\" /b)"
     ]
   }
 }

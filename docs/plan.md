@@ -2,17 +2,13 @@
 
 ## Active task
 
-### Task 8: Day notes
-Free text note field on each day. Added from home screen or 
-history view.
+### Task 9: Charts and visualisation
+Completion rate per habit over 30 days. Line chart for numeric 
+metrics over time. Recharts library.
 
 ---
 
 ## Backlog
-
-### Task 9: Charts and visualisation
-Completion rate per habit over 30 days. Line chart for numeric 
-metrics over time. Recharts library.
 
 ### Task 10: Activity heatmap
 GitHub-style yearly heatmap of logging activity. Colour intensity 
@@ -26,6 +22,11 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 8: Day notes
+Free text note field per day. Textarea saves on blur via PATCH /api/logs
+(upserts daily_log). Shown on home screen (today) and inline in each
+history row. HistoryList extracted as a client component to support editing.
 
 ### Task 7: Streak tracking
 Calculate consecutive days from DailyLog dates. One missed day

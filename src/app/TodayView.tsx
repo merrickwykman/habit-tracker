@@ -103,6 +103,9 @@ export default function TodayView({ habits, entries, greeting, streak, today, no
         <Link href="/history" className="text-sm text-gray-400 hover:text-gray-700">
           History →
         </Link>
+        <Link href="/charts" className="text-sm text-gray-400 hover:text-gray-700">
+          Charts →
+        </Link>
         <Link href="/habits" className="text-sm text-gray-400 hover:text-gray-700">
           Manage habits →
         </Link>
