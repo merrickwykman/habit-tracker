@@ -2,17 +2,13 @@
 
 ## Active task
 
-### Task 7: Streak tracking
-Calculate consecutive days from DailyLog dates. One missed day 
-grace period before reset. Display streak on home screen.
+### Task 8: Day notes
+Free text note field on each day. Added from home screen or 
+history view.
 
 ---
 
 ## Backlog
-
-### Task 8: Day notes
-Free text note field on each day. Added from home screen or 
-history view.
 
 ### Task 9: Charts and visualisation
 Completion rate per habit over 30 days. Line chart for numeric 
@@ -30,6 +26,11 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 7: Streak tracking
+Calculate consecutive days from DailyLog dates. One missed day
+grace period before reset. Streak displayed inline with greeting
+on home screen. Derived on read from daily_log dates.
 
 ### Task 6: History view
 List of past days showing summary of completed habits per day.

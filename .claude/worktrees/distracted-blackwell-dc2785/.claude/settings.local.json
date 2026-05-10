@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/lukew/Documents/Claude Projects/habit-tracker/**)",
+      "Bash(npx tsc *)"
+    ]
+  }
+}

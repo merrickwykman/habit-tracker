@@ -1,15 +1,6 @@
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
-
-function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split("-").map(Number);
-  return new Date(year, month - 1, day).toLocaleDateString("en-GB", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
+import HistoryList from "./HistoryList";
 
 export default async function HistoryPage() {
   const { data: logs } = await supabase
@@ -38,25 +29,7 @@ export default async function HistoryPage() {
         {rows.length === 0 ? (
           <p className="text-gray-500">No history yet. Start logging habits today.</p>
         ) : (
-          <ul className="flex flex-col divide-y divide-gray-100 rounded border border-gray-200">
-            {rows.map((row) => (
-              <li key={row.date} className="flex flex-col gap-1 px-4 py-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">{formatDate(row.date)}</span>
-                  {row.notes && (
-                    <span className="text-xs text-gray-400">Note</span>
-                  )}
-                </div>
-                {row.completedNames.length > 0 ? (
-                  <p className="text-sm text-gray-500">
-                    {row.completedNames.join(" · ")}
-                  </p>
-                ) : (
-                  <p className="text-sm italic text-gray-400">Nothing logged</p>
-                )}
-              </li>
-            ))}
-          </ul>
+          <HistoryList rows={rows} />
         )}
 
         <div className="border-t border-gray-100 pt-4">

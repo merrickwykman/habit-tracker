@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import HabitCheckIn from "./HabitCheckIn";
+import DayNotes from "@/components/DayNotes";
 import type { Habit, HabitEntry } from "@/types";
 
 interface TodayViewProps {
@@ -10,9 +11,11 @@ interface TodayViewProps {
   entries: HabitEntry[];
   greeting: string;
   streak: number;
+  today: string;
+  notes: string | null;
 }
 
-export default function TodayView({ habits, entries, greeting, streak }: TodayViewProps) {
+export default function TodayView({ habits, entries, greeting, streak, today, notes }: TodayViewProps) {
   const router = useRouter();
 
   const entryByHabitId = Object.fromEntries(entries.map((e) => [e.habit_id, e]));
@@ -93,6 +96,8 @@ export default function TodayView({ habits, entries, greeting, streak }: TodayVi
           </ul>
         </>
       )}
+
+      <DayNotes date={today} initialNotes={notes} />
 
       <div className="flex items-center justify-between border-t border-gray-100 pt-4">
         <Link href="/history" className="text-sm text-gray-400 hover:text-gray-700">

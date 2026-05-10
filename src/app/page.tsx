@@ -15,7 +15,7 @@ export default async function Home() {
 
   const [{ data: habits }, { data: log }, { data: allLogs }] = await Promise.all([
     supabase.from("habit").select("*").order("sort_order", { ascending: true }),
-    supabase.from("daily_log").select("id").eq("date", today).maybeSingle(),
+    supabase.from("daily_log").select("id, notes").eq("date", today).maybeSingle(),
     supabase.from("daily_log").select("date").order("date", { ascending: false }),
   ]);
 
@@ -41,6 +41,8 @@ export default async function Home() {
         entries={entries}
         greeting={greeting()}
         streak={streak}
+        today={today}
+        notes={log?.notes ?? null}
       />
     </main>
   );
