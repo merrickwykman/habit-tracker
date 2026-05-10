@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabase";
+import { calculateStreak } from "@/lib/streak";
 import TodayView from "./TodayView";
 
 function greeting(): string {
@@ -12,10 +13,16 @@ function greeting(): string {
 export default async function Home() {
   const today = new Date().toISOString().slice(0, 10);
 
-  const [{ data: habits }, { data: log }] = await Promise.all([
+  const [{ data: habits }, { data: log }, { data: allLogs }] = await Promise.all([
     supabase.from("habit").select("*").order("sort_order", { ascending: true }),
     supabase.from("daily_log").select("id").eq("date", today).maybeSingle(),
+    supabase.from("daily_log").select("date").order("date", { ascending: false }),
   ]);
+
+  const streak = calculateStreak(
+    (allLogs ?? []).map((l) => String(l.date).slice(0, 10)),
+    today
+  );
 
   const entries =
     log?.id
@@ -33,6 +40,7 @@ export default async function Home() {
         habits={habits ?? []}
         entries={entries}
         greeting={greeting()}
+        streak={streak}
       />
     </main>
   );

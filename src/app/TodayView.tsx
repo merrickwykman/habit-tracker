@@ -9,9 +9,10 @@ interface TodayViewProps {
   habits: Habit[];
   entries: HabitEntry[];
   greeting: string;
+  streak: number;
 }
 
-export default function TodayView({ habits, entries, greeting }: TodayViewProps) {
+export default function TodayView({ habits, entries, greeting, streak }: TodayViewProps) {
   const router = useRouter();
 
   const entryByHabitId = Object.fromEntries(entries.map((e) => [e.habit_id, e]));
@@ -36,7 +37,14 @@ export default function TodayView({ habits, entries, greeting }: TodayViewProps)
 
   return (
     <div className="flex flex-col gap-6">
-      <p className="text-lg font-medium">{greeting}</p>
+      <div className="flex items-baseline justify-between">
+        <p className="text-lg font-medium">{greeting}</p>
+        {streak > 0 && (
+          <span className="text-sm text-gray-500">
+            {streak}-day streak
+          </span>
+        )}
+      </div>
 
       {/* Heatmap placeholder — built in Task 10 */}
       <div className="flex h-16 items-center justify-center rounded border border-dashed border-gray-200 text-sm text-gray-400">

@@ -2,17 +2,13 @@
 
 ## Active task
 
-### Task 6: History view
-List of past days showing summary of completed habits per day. 
-Clean, scannable, no drilling into detail.
+### Task 7: Streak tracking
+Calculate consecutive days from DailyLog dates. One missed day 
+grace period before reset. Display streak on home screen.
 
 ---
 
 ## Backlog
-
-### Task 7: Streak tracking
-Calculate consecutive days from DailyLog dates. One missed day 
-grace period before reset. Display streak on home screen.
 
 ### Task 8: Day notes
 Free text note field on each day. Added from home screen or 
@@ -34,6 +30,10 @@ Mobile-friendly layout pass.
 ---
 
 ## Completed
+
+### Task 6: History view
+List of past days showing summary of completed habits per day.
+Clean, scannable, no drilling into detail.
 
 ### Task 5b: Habit goals and completion thresholds
 Added optional `goal` column to the `habit` table. Numeric habits
