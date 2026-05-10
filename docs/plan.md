@@ -2,22 +2,23 @@
 
 ## Active task
 
-### Task 10: Activity heatmap
-GitHub-style yearly heatmap of logging activity. Colour intensity 
-based on number of habits completed that day. Hero element on 
-home screen.
+### Task 11: Desktop visual design pass
+Full visual polish for desktop — typography scale, spacing, 
+full-width layout, colour consistency across all pages.
+No mobile considerations.
 
 ---
 
 ## Backlog
 
-### Task 11: PWA setup
-manifest.json, service worker, add to home screen support. 
-Mobile-friendly layout pass.
-
 ---
 
 ## Completed
+
+### Task 10: Activity heatmap
+52-week × 7-day CSS grid on home screen. Colour intensity normalised
+against total habit count. UTC arithmetic to avoid DST duplicate-key bug.
+Replaces the "coming soon" placeholder from Task 4.
 
 ### Task 9: Charts and visualisation
 Dedicated /charts page. Bar chart of 30-day completion rates for boolean

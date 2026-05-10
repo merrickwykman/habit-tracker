@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import Link from "next/link"; // used for "Add your first habit →"
 import HabitCheckIn from "./HabitCheckIn";
 import DayNotes from "@/components/DayNotes";
 import Heatmap from "@/components/Heatmap";
@@ -98,18 +98,6 @@ export default function TodayView({ habits, entries, greeting, streak, today, no
       )}
 
       <DayNotes date={today} initialNotes={notes} />
-
-      <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-        <Link href="/history" className="text-sm text-gray-400 hover:text-gray-700">
-          History →
-        </Link>
-        <Link href="/charts" className="text-sm text-gray-400 hover:text-gray-700">
-          Charts →
-        </Link>
-        <Link href="/habits" className="text-sm text-gray-400 hover:text-gray-700">
-          Manage habits →
-        </Link>
-      </div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import HistoryList from "./HistoryList";
 
@@ -17,26 +16,15 @@ export default async function HistoryPage() {
   });
 
   return (
-    <main className="mx-auto max-w-xl px-4 py-10">
+    <main className="mx-auto max-w-5xl px-8 py-8">
       <div className="flex flex-col gap-6">
-        <div className="flex items-center justify-between">
-          <h1 className="text-lg font-medium">History</h1>
-          <Link href="/" className="text-sm text-gray-400 hover:text-gray-700">
-            ← Today
-          </Link>
-        </div>
+        <h1 className="text-lg font-medium">History</h1>
 
         {rows.length === 0 ? (
           <p className="text-gray-500">No history yet. Start logging habits today.</p>
         ) : (
           <HistoryList rows={rows} />
         )}
-
-        <div className="border-t border-gray-100 pt-4">
-          <Link href="/habits" className="text-sm text-gray-400 hover:text-gray-700">
-            Manage habits →
-          </Link>
-        </div>
       </div>
     </main>
   );

@@ -45,7 +45,7 @@ export default async function Home() {
       : [];
 
   return (
-    <main className="mx-auto max-w-xl px-4 py-10">
+    <main className="mx-auto max-w-5xl px-8 py-8">
       <TodayView
         habits={habits ?? []}
         entries={entries}

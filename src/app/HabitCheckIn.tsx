@@ -84,8 +84,7 @@ export default function HabitCheckIn({ habit, entry, onSave }: HabitCheckInProps
             setInputError(null);
           }}
           placeholder="—"
-          style={{ color: '#111827', backgroundColor: 'white' }}
-          className={`w-20 rounded border px-2 py-1 text-right text-sm focus:outline-none focus:ring-2 focus:ring-gray-400 ${
+          className={`w-20 rounded border bg-white px-2 py-1 text-right text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-400 ${
             inputError ? "border-red-400" : "border-gray-300"
           }`}
         />
